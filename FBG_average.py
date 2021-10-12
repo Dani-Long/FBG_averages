@@ -34,25 +34,25 @@ def get_data(csvpath):
         # Read from csv line by line
         # and rstrip (right-end strip) to remove '\n' at the end of line
         lines = [line.rstrip() for line in f]
-        # print(data)
+        # print(data)    # Should be a big list of a list of strings
         return data
 
 def clean_up(data):  
     # Data is a list of strings, so split into a list of lists
     data = [line.split(',') for line in lines]
-    # print(data)
-    
+    # print(data)   
+    # (Should be a list of lists, each element a list of separate strings)
     # Remove the header row from data list (first element in LoL)
     data.pop(0)
 
     # Remove the first column (names) from LoL
     for element in data:
         element.pop(0)
-    # print(data)
+    # print(data)     # Now, the first element should just be data, not headers
 
     # Convert strings to ints so we can get averages
     data = [[int(item) for item in element] for element in data]
-    # print(data)  # Should be a list of lists, each element has 3 ints
+    # print(data)  # Each element in LoL should just be a list of 3 ints
     return data
 
 def do_maths(data):
